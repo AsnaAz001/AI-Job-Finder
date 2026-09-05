@@ -1,0 +1,86 @@
+research_task:
+  description: >
+    Analyze this request:
+
+    {user_request}
+
+    Give a short background summary for an AI Job Finder.
+
+    Identify:
+    - Top AI Engineer skills
+    - Programming languages
+    - AI/ML frameworks
+    - Generative AI technologies
+    - Experience requirements
+    - Education requirements
+
+    Do not search for jobs.
+    Keep the answer concise.
+
+  expected_output: >
+    A concise summary under 200 words covering:
+    - Skills
+    - Programming languages
+    - AI/ML frameworks
+    - Generative AI technologies
+    - Experience
+    - Education
+
+  agent: researcher
+
+
+job_search_task:
+  description: >
+    Find current AI Engineer and Generative AI Engineer jobs
+    in Pakistan and remote jobs available to people in Pakistan.
+
+    User request:
+    {user_request}
+
+    Use the web search tool exactly ONCE.
+
+    Perform one broad web search using a query similar to:
+
+    AI Engineer Generative AI Engineer jobs Pakistan remote 2026
+
+    The search should cover:
+    - AI Engineer jobs in Pakistan
+    - Generative AI Engineer jobs in Pakistan
+    - Remote AI Engineer jobs
+    - Remote Generative AI Engineer jobs
+
+    After the single web search, DO NOT use the search tool again.
+
+    From the search results, select a maximum of 5 relevant jobs.
+
+    For each job provide:
+    - Job title
+    - Company
+    - Location
+    - Remote or onsite
+    - Required skills if available
+    - Experience if available
+    - Job link
+
+    If information is not available in the search result,
+    write "Not specified".
+
+    Never invent information.
+
+    IMPORTANT:
+    After the one web search, immediately write the final answer.
+    Do not make another tool call.
+    Do not return JSON.
+    Do not return a function call.
+
+  expected_output: >
+    A markdown table with maximum 5 jobs.
+
+    Columns:
+    Job Title | Company | Location | Remote/Onsite |
+    Required Skills | Experience | Job Link
+
+    The final answer must be a normal markdown table
+    and must not contain a tool call.
+
+  agent: job_finder

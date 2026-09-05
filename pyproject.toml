@@ -1,0 +1,27 @@
+[project]
+name = "job_finder"
+version = "0.1.0"
+description = "Job_Finder using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[litellm,tools]>=1.15.20,<2.0.0",
+    "groq>=1.7.0",
+    "streamlit>=1.63.0",
+]
+
+[project.scripts]
+job_finder = "job_finder.main:run"
+run_crew = "job_finder.main:run"
+train = "job_finder.main:train"
+replay = "job_finder.main:replay"
+test = "job_finder.main:test"
+run_with_trigger = "job_finder.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
+project_id = "e2d36f94-fe04-4eaa-940a-24b1fb07447c"
